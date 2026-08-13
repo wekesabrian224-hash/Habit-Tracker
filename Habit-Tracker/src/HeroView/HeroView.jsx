@@ -5,11 +5,11 @@ import "./HeroView.css";
 function HeroView({ setActiveTab }) {
   return (
     <div className="hero">
-      {/*the blurry circles in the background */}
+      {/* These are just the blurry circles in the background */}
       <div className="blob blob-one"></div>
       <div className="blob blob-two"></div>
 
-      {/* main text section */}
+      {/* Main text section */}
       <motion.section
         className="hero-text"
         // Start hidden and a little lower
@@ -43,6 +43,78 @@ function HeroView({ setActiveTab }) {
           </button>
         </div>
       </motion.section>
+
+      {/* The virtual garden */}
+      <motion.section
+        className="garden"
+        // Start a little smaller and invisible
+        initial={{ opacity: 0, scale: 0.9 }}
+        // Grow into its normal size
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.6 }}
+      >
+        {/* Blue sky */}
+        <div className="sky">
+          {/* Green ground where our plants sit */}
+          <div className="ground">
+            {/* A sunflower */}
+            <PixelPlant stage={5} species="sunflower" size={120} />
+
+            {/* A rose */}
+            <PixelPlant stage={4} species="rose" size={100} />
+
+            {/* An herb */}
+            <PixelPlant stage={5} species="herb" size={110} />
+
+            {/* Another sunflower */}
+            <PixelPlant stage={3} species="sunflower" size={90} />
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Why people should use the app */}
+      <motion.section
+        className="features"
+        // Start slightly lower
+        initial={{ opacity: 0, y: 30 }}
+        // Move into place
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
+        <h2>Why grow with us?</h2>
+
+        {/* The feature cards */}
+        <div className="cards">
+          {/* First card */}
+          <div className="card">
+            <div className="icon">💧</div>
+
+            <h3>Nurturing, Not Judging</h3>
+
+            <p>
+              Missed a day? That's okay. Your garden simply rests. We encourage
+              you instead of punishing you.
+            </p>
+          </div>
+
+          {/* Second card */}
+          <div className="card card-large">
+            {/* A little decoration in the corner */}
+            <span className="plant-decoration">🌿</span>
+
+            <div className="icon">📈</div>
+
+            <h3>Tangible Progress</h3>
+
+            <p>
+              Every habit you complete helps your digital garden grow into
+              something beautiful.
+            </p>
+          </div>
+        </div>
+      </motion.section>
     </div>
   );
 }
+
+export default HeroView;
