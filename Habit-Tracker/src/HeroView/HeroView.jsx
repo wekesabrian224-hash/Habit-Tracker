@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { PixelPlant } from "../garden/plants.jsx";
+import { PixelPlant } from "../Garden/Plants";
 import "./HeroView.css";
 
 function HeroView({ setActiveTab }) {
