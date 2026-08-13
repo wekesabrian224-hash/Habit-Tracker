@@ -167,3 +167,111 @@
   position: relative;
   z-index: 1;
 }
+
+
+.features h2 {
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 25px;
+}
+
+/* Cards */
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
+}
+
+.card {
+  padding: 25px;
+  border-radius: 25px;
+  background: #f0f7ed;
+
+  /* Shadow */
+  box-shadow: 0 5px 15px #0002;
+
+  /* Hover animation */
+  transition: 0.3s;
+
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+.dark .card {
+  background: #203820;
+}
+
+.card p {
+  line-height: 1.5;
+}
+
+.dark .card p {
+  color: #ccc;
+}
+
+/* Icons */
+
+.icon {
+  width: 50px;
+  height: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  background: #b9dcae;
+
+  font-size: 24px;
+}
+
+/* Little plant decoration */
+
+.plant-decoration {
+  position: absolute;
+  right: 15px;
+  bottom: 5px;
+
+  font-size: 80px;
+  opacity: 0.1;
+}
+
+/*MOBILE*/
+
+@media (max-width: 700px) {
+
+  /* Smaller heading */
+  .hero-text h1 {
+    font-size: 35px;
+  }
+
+  /* Stack buttons */
+  .buttons {
+    flex-direction: column;
+  }
+
+  /* Full-width buttons */
+  .buttons button {
+    width: 100%;
+  }
+
+  /* Smaller garden */
+  .garden {
+    height: 350px;
+  }
+
+  /* Stack cards */
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  /* Smaller space between plants */
+  .ground {
+    gap: 5px;
+  }
+}
