@@ -1,11 +1,9 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import HeroView from "./HeroView/HeroView.jsx";
-import HeroView from "./HeroView/HeroView.css";
-import App from "./App.jsx";
+import HeroView from "../src/HeroView/HeroView";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <App />
+    <HeroView />
   </StrictMode>,
 );
