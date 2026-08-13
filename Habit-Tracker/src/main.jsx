@@ -1,9 +1,9 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import HeroView from "../src/HeroView/HeroView";
+import ShopView from "./ShopView/ShopView";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <HeroView />
+    <ShopView />
   </StrictMode>,
 );
