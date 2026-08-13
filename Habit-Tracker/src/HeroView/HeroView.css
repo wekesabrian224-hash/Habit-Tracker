@@ -1,0 +1,10 @@
+/*Main page*/
+
+.hero {
+  min-height: 100vh;
+  padding: 60px 20px;
+  background: #fdf9f0;
+  color: #1c1c17;
+  position: relative;
+  overflow: hidden;
+}
