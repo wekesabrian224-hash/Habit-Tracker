@@ -1,8 +1,9 @@
+import { useState } from "react";
 import { motion } from "motion/react";
 import { PixelPlant } from "../Garden/Plants";
 import "./ShopView.css";
 
-// These are the items that will appear in the shop
+// Shop items
 const defaultItems = [
   {
     id: 1,
@@ -13,6 +14,7 @@ const defaultItems = [
     currency: "coins",
     owned: false,
   },
+
   {
     id: 2,
     name: "Cozy Rose",
@@ -20,8 +22,9 @@ const defaultItems = [
     species: "rose",
     price: 10,
     currency: "gems",
-    owned: true,
+    owned: false,
   },
+
   {
     id: 3,
     name: "Fresh Herb",
@@ -31,6 +34,7 @@ const defaultItems = [
     currency: "coins",
     owned: false,
   },
+
   {
     id: 4,
     name: "Spring Tulip",
@@ -43,9 +47,55 @@ const defaultItems = [
 ];
 
 function ShopView({ items, user, onBuyItem }) {
-  // Use the items from the app.
-  // If there are none, use our four shop items.
-  const shopItems = items && items.length > 0 ? items : defaultItems;
+  // Use the items coming from the app.
+  // If there are no items, use our default items.
+  const [shopItems, setShopItems] = useState(
+    items && items.length > 0 ? items : defaultItems,
+  );
+
+  // Keep track of the user's coins and gems
+  const [coins, setCoins] = useState(user?.coins ?? 250);
+  const [gems, setGems] = useState(user?.gems ?? 18);
+
+  // This function runs when Get Item is clicked
+  const handleBuy = (item) => {
+    // Check if the item costs coins
+    if (item.currency === "coins") {
+      // Check if the user has enough coins
+      if (coins < item.price) {
+        alert("You don't have enough coins!");
+        return;
+      }
+
+      // Remove the price from the coins
+      setCoins(coins - item.price);
+    }
+
+    // Check if the item costs gems
+    if (item.currency === "gems") {
+      // Check if the user has enough gems
+      if (gems < item.price) {
+        alert("You don't have enough gems!");
+        return;
+      }
+
+      // Remove the price from the gems
+      setGems(gems - item.price);
+    }
+
+    // Change the item to owned
+    setShopItems(
+      shopItems.map((shopItem) =>
+        shopItem.id === item.id ? { ...shopItem, owned: true } : shopItem,
+      ),
+    );
+
+    // If the parent component has its own buy function,
+    // send the purchased item to it.
+    if (onBuyItem) {
+      onBuyItem(item);
+    }
+  };
 
   return (
     <div className="shop">
@@ -60,13 +110,13 @@ function ShopView({ items, user, onBuyItem }) {
           </p>
         </div>
 
-        {/* Show the user's balance */}
+        {/* User balance */}
         <div className="balance">
-          <span>🪙 {user?.coins ?? 250} Coins</span>
+          <span>🪙 {coins} Coins</span>
 
           <span className="line"></span>
 
-          <span>💎 {user?.gems ?? 18} Gems</span>
+          <span>💎 {gems} Gems</span>
         </div>
       </div>
 
@@ -82,7 +132,7 @@ function ShopView({ items, user, onBuyItem }) {
             <div className="plant-box">
               <PixelPlant stage={5} species={item.species} size={96} />
 
-              {/* Show Owned if the user already has it */}
+              {/* Show Owned */}
               {item.owned && <span className="owned">Owned</span>}
             </div>
 
@@ -95,14 +145,13 @@ function ShopView({ items, user, onBuyItem }) {
 
             {/* Price and button */}
             <div className="item-bottom">
+              {/* Show price */}
               <strong>
                 {item.currency === "coins" ? "🪙" : "💎"} {item.price}
               </strong>
 
-              <button
-                onClick={() => onBuyItem && onBuyItem(item)}
-                disabled={item.owned}
-              >
+              {/* Buy button */}
+              <button onClick={() => handleBuy(item)} disabled={item.owned}>
                 {item.owned ? "Equipped" : "Get Item"}
               </button>
             </div>
