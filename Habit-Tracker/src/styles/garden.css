@@ -1,0 +1,293 @@
+/* -------------------------------------------------------------------- */
+/* Shared "cozy garden" theme for GardenView + GrowthCoachView          */
+/* Plain CSS — no Tailwind or other dependency required.                */
+/* -------------------------------------------------------------------- */
+
+:root {
+  --hg-cream: #fdf9f0;
+  --hg-panel: #f1eee5;
+  --hg-border: rgba(195, 200, 191, 0.4);
+  --hg-ink: #1c1c17;
+  --hg-ink-soft: #434841;
+  --hg-green: #4a6549;
+  --hg-green-dark: #243d24;
+  --hg-green-light: #8ba888;
+}
+
+/* ---------- Garden view ---------- */
+
+.garden-view {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 32px 20px 80px;
+  color: var(--hg-ink);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.garden-header h1 {
+  font-size: 28px;
+  font-weight: 800;
+  margin: 0 0 6px;
+}
+
+.garden-header p {
+  color: var(--hg-ink-soft);
+  margin: 0 0 14px;
+}
+
+.bloom-bar {
+  height: 10px;
+  background: #e6e2d9;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.bloom-bar-fill {
+  height: 100%;
+  background: var(--hg-green);
+  border-radius: 999px;
+  transition: width 0.5s ease;
+}
+
+.garden-grid {
+  margin-top: 28px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 18px;
+}
+
+.plot {
+  background: var(--hg-panel);
+  border: 1px solid var(--hg-border);
+  border-radius: 22px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.15s ease;
+}
+
+.plot:hover {
+  transform: translateY(-2px);
+}
+
+.plot-done {
+  background: var(--hg-green-light);
+  color: var(--hg-green-dark);
+}
+
+.plot-top {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.plot-category {
+  font-size: 11px;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 3px 9px;
+  border-radius: 999px;
+}
+
+.plot-water-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.plot-check {
+  font-size: 18px;
+}
+
+.plot-plant {
+  margin: 6px 0;
+}
+
+.plot-title {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 4px 0 2px;
+}
+
+.plot-streak {
+  font-size: 12px;
+  opacity: 0.8;
+  margin-bottom: 10px;
+}
+
+.plot-progress {
+  width: 100%;
+  height: 6px;
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.plot-progress-fill {
+  height: 100%;
+  background: var(--hg-green);
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+/* ---------- Growth Coach view ---------- */
+
+.coach-view {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 28px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  min-height: 70vh;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--hg-ink);
+}
+
+.coach-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--hg-border);
+  margin-bottom: 16px;
+}
+
+.coach-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  background: var(--hg-green-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.coach-header h1 {
+  font-size: 18px;
+  margin: 0;
+}
+
+.coach-header p {
+  font-size: 12px;
+  color: var(--hg-ink-soft);
+  margin: 2px 0 0;
+}
+
+.coach-messages {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 8px 0 20px;
+}
+
+.coach-welcome {
+  text-align: center;
+  padding: 30px 10px;
+  color: var(--hg-ink-soft);
+}
+
+.coach-welcome h2 {
+  color: var(--hg-ink);
+  margin-bottom: 6px;
+}
+
+.coach-suggestions {
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.coach-suggestions button {
+  background: var(--hg-panel);
+  border: 1px solid var(--hg-border);
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.coach-suggestions button:hover {
+  background: #e6e2d9;
+}
+
+.coach-msg {
+  max-width: 80%;
+  padding: 12px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.coach-msg-user {
+  align-self: flex-end;
+  background: var(--hg-green);
+  color: white;
+  border-bottom-right-radius: 6px;
+}
+
+.coach-msg-assistant {
+  align-self: flex-start;
+  background: var(--hg-green-light);
+  color: var(--hg-green-dark);
+  border-bottom-left-radius: 6px;
+}
+
+.coach-typing {
+  font-size: 12px;
+  font-style: italic;
+  color: var(--hg-ink-soft);
+}
+
+.coach-error {
+  font-size: 12px;
+  color: #b3402a;
+}
+
+.coach-input-bar {
+  display: flex;
+  gap: 8px;
+  background: var(--hg-panel);
+  border-radius: 16px;
+  padding: 8px;
+  border: 2px solid transparent;
+}
+
+.coach-input-bar:focus-within {
+  border-color: var(--hg-green);
+}
+
+.coach-input-bar input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 8px 10px;
+  font-size: 14px;
+}
+
+.coach-input-bar button {
+  background: var(--hg-green);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 0 18px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.coach-input-bar button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

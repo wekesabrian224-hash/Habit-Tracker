@@ -1,6 +1,8 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import ProfilePage from "./pages/ProfilePage";
+import GardenView from "./pages/GardenView";
+import GrowthCoachView from "./pages/GrowthCoachView";
 
 function App() {
   return (
@@ -12,15 +14,11 @@ function App() {
 
         <Route path="/profile" element={<ProfilePage />} />
 
-        <Route
-          path="/dashboard"
-          element={
-            <div>
-              <h1>🌱 Habit Garden Dashboard</h1>
-              <p>Dashboard coming soon...</p>
-            </div>
-          }
-        />
+        <Route path="/dashboard" element={<Navigate to="/garden" replace />} />
+
+        <Route path="/garden" element={<GardenView />} />
+
+        <Route path="/coach" element={<GrowthCoachView />} />
       </Routes>
     </BrowserRouter>
   );
